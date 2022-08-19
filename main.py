@@ -187,7 +187,7 @@ class Ui_MainWindow(object):
                 for i in range(self.tableWidget.rowCount()):
                     mas.append([])
                     for j in range(self.tableWidget.columnCount()):
-                        if self.tableWidget.item(i,j)==None:
+                        if self.tableWidget.item(i,j)==None or self.tableWidget.item(i,j).text()=="":
                             self.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(self.Control_sum.text()))
                         mas[i].append(int(self.tableWidget.item(i,j).text()))
                 alg.set_mass(mas)
@@ -209,8 +209,8 @@ class Ui_MainWindow(object):
             mass1=[]
             mass1.append(self.plainTextEdit.toPlainText())
             a = eg.filesavebox()
-            s = a + ".txt"
             if a!=None:
+                s = a + ".txt"
                 file.prog_to_file(s, mass1)
                 msb = QMessageBox()
                 msb.setIcon(QMessageBox.Information)
